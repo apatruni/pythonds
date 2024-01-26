@@ -52,6 +52,24 @@ class LinkedList:
         
         currPtr.next = None
 
+        numDeleted = self.size - pos + 1
+        self.size -= numDeleted
+
+    def deleteAtPos(self, pos):
+        if self.size < pos:
+            return
+
+        currPos = 1
+        currPtr = self.head
+
+        while currPos < pos:
+            currPtr = currPtr.next
+            currPos += 1
+        
+        currPtr.next = currPtr.next.next
+        self.size -= 1
+
+
     def __repr__(self):
         currPtr = self.head.next
         repr = ""
@@ -60,6 +78,3 @@ class LinkedList:
             currPtr = currPtr.next
         return repr[:-2]
     
-
-
-
